@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {VictoryChart, VictoryLine} from 'victory';
 
-class MerchantProfile extends Component {
+export default class MerchantProfile extends Component {
   render(){
     let orderData = [{orderID: 1,
                       placedTime: Date.now(),
@@ -62,5 +62,3 @@ class MerchantProfile extends Component {
     )
   }
 }
-
-export default MerchantProfile;
