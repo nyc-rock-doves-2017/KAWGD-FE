@@ -49,7 +49,8 @@ export default class MerchantProfile extends Component {
       <VictoryChart>
         <VictoryLine
           style={{data: { stroke: "green"}}}
-          data={orgData}/>
+          data={orgData}
+          />
       </VictoryChart>
       <h3>Historical Information:</h3>
       <ol>
