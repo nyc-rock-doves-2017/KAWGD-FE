@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import {VictoryChart, VictoryLine} from 'victory';
 
-class MerchantProfile extends React.Component {
+class MerchantProfile extends Component {
   render(){
     let orderData = [{orderID: 1,
                       placedTime: Date.now(),
@@ -29,12 +30,13 @@ class MerchantProfile extends React.Component {
                       }
                     ]
 
-    let organizedData = {[ {orderId: 1, deliveryTime_mins: 2},
-                            {orderId: 2, deliveryTime_mins: 2},
-                            {orderId: 3, deliveryTime_mins: 3},
-                            {orderId: 4, deliveryTime_mins: 5},
-                            {orderId: 5, deliveryTime_mins: 2}]
-                          }
+    let orgData = [
+      {x: 1, y: 5},
+      {x: 2, y: 2},
+      {x: 3, y: 3},
+      {x: 4, y: 5},
+      {x: 5, y: 2}
+    ]
     return(
       <div>
       <h1>Account Profile</h1>
@@ -44,6 +46,11 @@ class MerchantProfile extends React.Component {
           <li key={i}>Order ID: {order.orderID} - Delivery: {order.deliveredTime-order.placedTime} min</li>
         )}
       </ol>
+      <VictoryChart>
+        <VictoryLine
+          style={{data: { stroke: "green"}}}
+          data={orgData}/>
+      </VictoryChart>
       <h3>Historical Information:</h3>
       <ol>
         {orderData.map((order, i) =>
