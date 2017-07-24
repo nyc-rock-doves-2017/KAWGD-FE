@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import LoggedIn from './components/Header-Login-Register-CurrentUser/LoggedIn.js';
-import NotLoggedIn from './components/Header-Login-Register-CurrentUser/NotLoggedIn.js';
+import LoggedIn from './LoggedIn.js';
+import NotLoggedIn from './NotLoggedIn.js';
 
 class Header extends Component {
   render() {
