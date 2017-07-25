@@ -3,30 +3,31 @@ import {VictoryChart,VictoryLabel, VictoryLine} from 'victory';
 
 export default class MerchantProfile extends Component {
   render(){
-    let orderData = [{orderID: 1,
-                      placedTime: Date.now(),
-                      deliveredTime: Date.now()+1,
-                      deliveryTime_mins: 2
+    let orderData = [{
+                        "city": "New York City",
+                        "country": "United States",
+                        "delivery_time": "0.139916 min",
+                        "items": "Burritos",
+                        "name": "Lori Gulgowski",
+                        "order_id": 1,
+                        "phone": "(534) 299-3624 x045",
+                        "state": "NY",
+                        "street": "420 High Street",
+                        "total_price": 6,
+                        "zipcode": "10001"
                       },
-                      {orderID: 2,
-                      placedTime: Date.now(),
-                      deliveredTime: Date.now()+3,
-                      deliveryTime_mins: 2
-                      },
-                      {orderID: 3,
-                      placedTime: Date.now(),
-                      deliveredTime: Date.now()+5,
-                      deliveryTime_mins: 2
-                      },
-                      {orderID: 4,
-                      placedTime: Date.now(),
-                      deliveredTime: Date.now()+2,
-                      deliveryTime_mins: 2
-                      },
-                      {orderID: 5,
-                      placedTime: Date.now(),
-                      deliveredTime: Date.now()+1,
-                      deliveryTime_mins: 2
+                      {
+                        "city": "New York City",
+                        "country": "United States",
+                        "delivery_time": "0.139916 min",
+                        "items": "Burritos",
+                        "name": "Lori Gulgowski",
+                        "order_id": 1,
+                        "phone": "(534) 299-3624 x045",
+                        "state": "NY",
+                        "street": "420 High Street",
+                        "total_price": 6,
+                        "zipcode": "10001"
                       }
                     ]
 
@@ -41,25 +42,26 @@ export default class MerchantProfile extends Component {
       <div>
       <h1>Account Profile</h1>
       <h2>Orders In Progress:</h2>
+      <p>Welcome! The below are your order information!</p>
       <ol>
         {orderData.map((order, i) =>
-          <li key={i}>Order ID: {order.orderID} - Delivery: {order.deliveredTime-order.placedTime} min</li>
+          <li key={i}>Order ID: {order.orderID} - Delivery: {order.delivery_time}</li>
         )}
       </ol>
-      <VictoryChart>
-        <VictoryLabel y={10} text={"Historical Activity"}></VictoryLabel>
+      <h3>Historical Information:</h3>
+      <ol>
+        {orderData.map((order, i) =>
+          <li key={i}>Order ID: {order.orderID} - Delivery: {order.delivery_time}</li>
+        )}
+      </ol>
+      <VictoryChart height={200} animate={{easing: "circle"}}>
+        <VictoryLabel y={10} x={130} text={"Delivery Time by Order (In Minutes)"}></VictoryLabel>
+        <VictoryLabel y={180} x={180} text={"Order"}></VictoryLabel>
         <VictoryLine
           style={{data: { stroke: "green"}}}
           data={orgData}
           />
       </VictoryChart>
-      <h3>Historical Information:</h3>
-      <ol>
-        {orderData.map((order, i) =>
-          <li key={i}>Order ID: {order.orderID} - Delivery: {order.deliveredTime-order.placedTime} min</li>
-        )}
-      </ol>
-
     </div>
     )
   }

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Router from './components/Router.js';
 import MerchantProfile from './components/MerchantActivity/MerchantProfile.js';
-import OrderShow from './components/Orders/ordershow.js';
+import OrderShow from './components/Orders/OrderShow.js';
 
 class App extends Component {
   constructor() {
