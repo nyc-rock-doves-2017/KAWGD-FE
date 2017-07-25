@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-// import Header from './components/Header-Login-Register-CurrentUser/Header.js';
-import Login from './components/Forms/Login.js';
-import Register from './components/Forms/Register.js';
 import Router from './components/Router.js';
+import MerchantProfile from './components/MerchantActivity/MerchantProfile.js';
 
 class App extends Component {
   constructor() {
