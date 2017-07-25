@@ -1,13 +1,12 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-class Register extends React.Component {
-
+class NewOrder extends Component {
   render(){
     return(
       <div className="popup">
         <a href="/" onClick={this.props.methods.showLogin} className='text-right'>X</a>
         <form className="popup">
-          <p>Register</p>
+          <p>Add Order</p>
           <div className="label-input">
             <label>Email Address</label>
             <input placeholder="usuario@dominio.com" />
@@ -28,11 +27,11 @@ class Register extends React.Component {
             <label>Password</label>
             <input placeholder="Password" />
           </div>
-          <button>Register</button>
+          <button>Add Order</button>
         </form>
       </div>
     );
   };
 };
 
-export default Register;
+export default NewOrder;
