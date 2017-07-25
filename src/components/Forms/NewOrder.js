@@ -27,7 +27,7 @@ class NewOrder extends Component {
             <label>Password</label>
             <input placeholder="Password" />
           </div>
-          <button>Add Order</button>
+          <button onClick={this.props.methods.addOrder}>Add Order</button>
         </form>
       </div>
     );

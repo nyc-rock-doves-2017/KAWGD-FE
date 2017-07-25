@@ -8,7 +8,8 @@ export default class OrderShow extends Component {
                   deliveryTime_mins: 2
                   }
     return(
-      <div>
+      <div className="popup">
+        <a href="/" onClick={this.props.methods.showLogin} className='text-right'>X</a>
         <h1>Information for:</h1>
         <ul>
           <li>Order ID: {order.orderID}</li>
