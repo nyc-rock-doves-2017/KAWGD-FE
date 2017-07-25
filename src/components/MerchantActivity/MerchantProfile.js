@@ -38,9 +38,11 @@ export default class MerchantProfile extends Component {
       {x: 4, y: 5},
       {x: 5, y: 2}
     ]
+
     return(
       <div>
       <h1>Account Profile</h1>
+      <a href="/" onClick={this.props.methods.showAddOrder}>Add New Order</a>
       <h2>Orders In Progress:</h2>
       <p>Welcome! The below are your order information!</p>
       <ol>
