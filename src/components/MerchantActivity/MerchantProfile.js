@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import OrderChart from './OrderChart.js';
+import OrderShow from '../Orders/ordershow.js';
 
 export default class MerchantProfile extends Component {
   render(){
@@ -48,26 +49,26 @@ export default class MerchantProfile extends Component {
                     ]
 
     var historicalOrders = orderData.filter((data)=> data.deliveryTime != null)
-    var currentOrders = orderData.filter((data)=> data.deliveryTime === null)
+    var unassignedOrders = orderData.filter((data)=> data.deliveryTime === null)
 
     return(
       <div>
       <h1>Account Profile</h1>
       <a href="/" onClick={this.props.methods.showAddOrder}>Add New Order</a>
-      <h2>Orders In Progress:</h2>
-      <p>Welcome! The below are your order information!</p>
+      <h2>Unassigned Orders:</h2>
       <ol>
-        {currentOrders.map((order, i) =>
-          <li key={i}>Order ID: {order.orderId} - Delivery: {order.delivery_time}</li>
+        {unassignedOrders.map((order, i) =>
+          <li key={i}>Order ID: {order.orderId} >> Customer Name: {order.customerName}</li>
         )}
       </ol>
-      <h3>Historical Information:</h3>
+      <h2>Historical Orders:</h2>
       <ol>
         {historicalOrders.map((order, i) =>
-          <li key={i}>Order ID: {order.orderId} - Delivery: {order.delivery_time}</li>
+          <li key={i}>Order ID: {order.orderId} - Delivery: {order.deliveryTime} minutes</li>
         )}
       </ol>
       <OrderChart dataCollection={historicalOrders}></OrderChart>
+      <OrderShow/>
     </div>
     )
   }

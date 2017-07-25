@@ -4,11 +4,7 @@ import {VictoryChart, VictoryLabel, VictoryLine, VictoryZoomContainer, VictoryAx
 export default class OrderChart extends Component {
   render() {
     let dataCollection = this.props.dataCollection
-    let orgData = [
-      new dataComponent(dataCollection[0].orderId,dataCollection[0].delivery_time),
-      new dataComponent(dataCollection[1].orderId,dataCollection[1].delivery_time)
-    ]
-//dataCollection.map( (data, key)=> new dataComponent(data.orderId, data.delivery_time))
+
     function dataComponent(x,y){
       this.x = x
       this.y = parseInt(y)
