@@ -9,14 +9,13 @@ class Login extends React.Component {
           <p>Login</p>
           <div className="">
             <label>Email Address</label>
-            <input placeholder="usuario@dominio.com" />
+            <input value={this.props.state.email} onChange={this.props.methods.getEmail} placeholder="usuario@dominio.com" />
           </div>
           <div className="">
             <label>Password</label>
-            <input placeholder="Password" />
+            <input value={this.props.state.password} onChange={this.props.methods.getPassword} placeholder="Password" />
           </div>
-          <a>Forgot Password?</a>
-          <button>Login</button>
+          <button onClick={this.props.methods.authorize}>Login</button>
         </form><br />
         <a href="/" onClick={this.props.methods.showRegister}>New Users Sign Up Here!</a>
       </div>

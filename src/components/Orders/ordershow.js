@@ -17,7 +17,8 @@ export default class OrderShow extends Component {
                           "zipcode": "10001"
                       }
     return(
-      <div>
+      <div className="popup">
+        <a href="/" onClick={this.props.methods.showLogin} className='text-right'>X</a>
         <h1>Information for:</h1>
         <ul>
           <li>Order ID: {order.orderId}</li>

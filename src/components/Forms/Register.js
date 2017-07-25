@@ -10,25 +10,25 @@ class Register extends React.Component {
           <p>Register</p>
           <div className="label-input">
             <label>Email Address</label>
-            <input placeholder="usuario@dominio.com" />
+            <input value={this.props.state.email} onChange={this.props.methods.getEmail} placeholder="usuario@dominio.com" />
           </div>
           <div className="label-input">
-            <label>Address</label>
-            <input placeholder="123 Street St #123" />
+            <label>Street Address</label>
+            <input value={this.props.state.street} onChange={this.props.methods.getStreet} placeholder="123 Street St #123" />
           </div>
           <div className="label-input">
             <label>City, State  Zip</label>
-            <input placeholder="NY, NY 10001" />
+            <input value={this.props.state.city} onChange={this.props.methods.getCity} placeholder="NY, NY 10001" />
           </div>
           <div className="label-input">
             <label>phone</label>
-            <input placeholder="890-567-1234" />
+            <input value={this.props.state.phone} onChange={this.props.methods.getPhone} placeholder="890-567-1234" />
           </div>
           <div className="label-input">
             <label>Password</label>
-            <input placeholder="Password" />
+            <input value={this.props.state.password} onChange={this.props.methods.getPassword} placeholder="Password" />
           </div>
-          <button>Register</button>
+          <button onClick={this.props.methods.register}>Register</button>
         </form>
       </div>
     );
