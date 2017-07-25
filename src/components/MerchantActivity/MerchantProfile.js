@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {VictoryChart, VictoryLine} from 'victory';
+import {VictoryChart,VictoryLabel, VictoryLine} from 'victory';
 
 export default class MerchantProfile extends Component {
   render(){
@@ -47,6 +47,7 @@ export default class MerchantProfile extends Component {
         )}
       </ol>
       <VictoryChart>
+        <VictoryLabel y={10} text={"Historical Activity"}></VictoryLabel>
         <VictoryLine
           style={{data: { stroke: "green"}}}
           data={orgData}
