@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-// import Header from './components/Header-Login-Register-CurrentUser/Header.js';
-import Login from './components/Forms/Login.js';
-import Register from './components/Forms/Register.js';
 import Router from './components/Router.js';
+import OrderShow from './components/Orders/ordershow.js';
 
 class App extends Component {
   constructor() {
@@ -12,11 +9,11 @@ class App extends Component {
     this.state = {
       authUser: null,
       orders: [],
-      inFocus: ['login'],
+      inFocus: ['merchant'],
     }
     this.showLogin = this.showLogin.bind(this)
     this.showRegister = this.showRegister.bind(this)
-    // this.showAddOrder = this.showAddOrder.bind(this)
+    this.showAddOrder = this.showAddOrder.bind(this)
     // this.authorize = this.authorize.bind(this)
     // this.register = this.register.bind(this)
     // this.logout = this.logout.bind(this)
@@ -41,9 +38,10 @@ class App extends Component {
     this.setState({inFocus: ['register']})
   }
 
-  // showAddOrder(e) {
-  //   this.setState({inFocus: ['addOrder']})
-  // }
+  showAddOrder(e) {
+    e.preventDefault();
+    this.setState({inFocus: ['merchant', 'addOrder']})
+  }
 
   // authorize(e) {
   //   // if ()
@@ -62,23 +60,23 @@ class App extends Component {
   //   this.setState({inFocus: ['merchant']})
   // }
 
-  // showMerchantProfile(e) {
-  //   this.setState({inFocus: ['merchant']})
-  // }
+  showMerchantProfile(e) {
+    this.setState({inFocus: ['merchant']})
+  }
 
-  // showOrder(e) {
-  //   this.setState({inFocus: ['merchant', 'order']})
-  // }
+  showOrder(e) {
+    this.setState({inFocus: ['merchant', 'order']})
+  }
 
   // showDeliverer(e) {
   //   this.setState({inFocus: ['merchant', 'deliverer']})
   // }
 
   render() {
-    let methods = {showRegister: this.showRegister, showLogin: this.showLogin}
+    let methods = {showRegister: this.showRegister, showLogin: this.showLogin, showMerchantProfile: this.showMerchantProfile, showOrder: this.showOrder, showAddOrder: this.showAddOrder}
     return (
       <div>
-        <Router state={this.state.inFocus[0]} methods={methods} />
+        <Router state={this.state.inFocus} methods={methods} />
       </div>
     )
   }
