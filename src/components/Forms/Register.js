@@ -14,7 +14,7 @@ class Register extends React.Component {
           </div>
           <div className="label-input">
             <label>Street Address</label>
-            <input value={this.props.state.street} onChange={this.props.methods.getStreet} placeholder="123 Street St #123" />
+            <input value={this.props.state.name} onChange={this.props.methods.getName} placeholder="123 Street St #123" />
           </div>
           <div className="label-input">
             <label>City, State  Zip</label>

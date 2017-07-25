@@ -22,6 +22,7 @@ class App extends Component {
       country: '',
       items: '',
       total: '',
+      name: ''
     }
     this.showLogin = this.showLogin.bind(this)
     this.showRegister = this.showRegister.bind(this)
@@ -43,6 +44,7 @@ class App extends Component {
     this.getCountry = this.getCountry.bind(this)
     this.getItems = this.getItems.bind(this)
     this.getTotal = this.getTotal.bind(this)
+    this.getName = this.getName.bind(this)
 
   }
 
@@ -79,7 +81,7 @@ class App extends Component {
 
   register(e) {
     e.preventDefault();
-    axios.post('https://git.heroku.com/frozen-reaches-18671/users', { email: this.state.email, password: this.state.password, user_type: 'merchant', phone_number: this.state.phone })
+    axios.post('https://git.heroku.com/frozen-reaches-18671/users', { email: this.state.email, name: this.state.name, password: this.state.password, user_type: 'merchant', phone_number: this.state.phone })
       .then(function(res){
         console.log(res)
       // if (res === "OK") {
@@ -175,7 +177,7 @@ class App extends Component {
   }
 
   render() {
-    this.showMerchantProfile()
+    // this.showMerchantProfile()
     let methods = {getTotal: this.getTotal, getItems: this.getItems, getZip: this.getZip, getCountry: this.getCountry, getState: this.getState, getCity: this.getCity, getStreet: this.getStreet, getName: this.getName, getPhone: this.getPhone, getPassword: this.getPassword, getEmail: this.getEmail, showDeliverer: this.showDeliverer, logout: this.logout, addOrder: this.addOrder, showRegister: this.showRegister, authorize: this.authorize, register: this.register, showLogin: this.showLogin, showMerchantProfile: this.showMerchantProfile, showOrder: this.showOrder, showAddOrder: this.showAddOrder}
     return (
       <div>
