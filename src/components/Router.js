@@ -32,8 +32,8 @@ class Router extends Component {
       } else if (inFocus[1] === 'addOrder') {
         return (
           <div className="overlay">
-            <MerchantProfile state={state} methods={methods} />
             <NewOrder state={state} methods={methods} />
+            <MerchantProfile state={state} methods={methods} />
           </div>
         )
       } else if (inFocus[1] === 'order') {

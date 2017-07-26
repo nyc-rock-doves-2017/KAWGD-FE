@@ -4,28 +4,44 @@ class NewOrder extends Component {
   render(){
     return(
       <div className="popup">
-        <a href="/" onClick={this.props.methods.showLogin} className='text-right'>X</a>
+        <a href="/" onClick={this.props.methods.showMerchantProfile} className='text-right'>X</a>
         <form className="popup">
           <p>Add Order</p>
           <div className="label-input">
-            <label>Email Address</label>
-            <input placeholder="usuario@dominio.com" />
+            <label>Items</label>
+            <input value={this.props.state.items} onChange={this.props.methods.getItems} placeholder="items" />
           </div>
           <div className="label-input">
-            <label>Address</label>
-            <input placeholder="123 Street St #123" />
+            <label>total price</label>
+            <input value={this.props.state.total} onChange={this.props.methods.getTotal} placeholder="$$" />
           </div>
           <div className="label-input">
-            <label>City, State  Zip</label>
-            <input placeholder="NY, NY 10001" />
+            <label>Customer Name</label>
+            <input value={this.props.state.name} onChange={this.props.methods.getName} placeholder="chrissy evert" />
           </div>
           <div className="label-input">
-            <label>phone</label>
-            <input placeholder="890-567-1234" />
+            <label>Street Address</label>
+            <input value={this.props.state.street} onChange={this.props.methods.getStreet} placeholder="123 street st" />
           </div>
           <div className="label-input">
-            <label>Password</label>
-            <input type="password" placeholder="Password" />
+            <label>city</label>
+            <input value={this.props.state.city} onChange={this.props.methods.getCity} placeholder="890-567-1234" />
+          </div>
+          <div className="label-input">
+            <label>state</label>
+            <input value={this.props.state.state} onChange={this.props.methods.getState} placeholder="890-567-1234" />
+          </div>
+          <div className="label-input">
+            <label>zipcode</label>
+            <input value={this.props.state.zip} onChange={this.props.methods.getZip} placeholder="890-567-1234" />
+          </div>
+          <div className="label-input">
+            <label>country</label>
+            <input value={this.props.state.country} onChange={this.props.methods.getCountry} placeholder="890-567-1234" />
+          </div>
+          <div className="label-input">
+            <label>customer phone</label>
+            <input value={this.props.state.phone} onChange={this.props.methods.getPhone} placeholder="890-567-1234" />
           </div>
           <button onClick={this.props.methods.addOrder}>Add Order</button>
         </form>
