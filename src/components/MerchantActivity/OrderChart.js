@@ -12,14 +12,26 @@ export default class OrderChart extends Component {
 
     return(
       <div>
-        <h2>Delivery Time by Order (In Minutes)</h2>
-        <VictoryChart height={200} animate={{easing: "circle"}} containerComponent={<VictoryZoomContainer/>}>
+
+        <h2>Charts</h2>
+        <h3>Delivery Time by Order (In Minutes)</h3>
+        <VictoryChart height={150} animate={{easing: "circle"}} containerComponent={<VictoryZoomContainer/>}>
           <VictoryLine
             style={{data: { stroke: "green"}}}
-            data={dataCollection.map((data,key)=> new dataComponent(data.orderId, data.deliveryTime))}
+            data={dataCollection.map((data,key)=> new dataComponent(data.orderId, data.totalDeliveryTime))}
             />
           <VictoryAxis label="Order ID"/>
           <VictoryAxis dependentAxis label="Delivery Time"/>
+        </VictoryChart>
+        <h2>Charts</h2>
+        <h3>Delivery Time by Price (In Minutes)</h3>
+        <VictoryChart height={100} animate={{easing: "circle"}} containerComponent={<VictoryZoomContainer/>}>
+          <VictoryLine
+            style={{data: { stroke: "green"}}}
+            data={dataCollection.map((data,key)=> new dataComponent(data.totalPrice, data.totalDeliveryTime))}
+            />
+          <VictoryAxis label="Price"/>
+          <VictoryAxis dependentAxis label="Min"/>
         </VictoryChart>
       </div>
     )
