@@ -10,7 +10,7 @@ class App extends Component {
     this.state = {
       authUser: null,
       orders: [],
-      inFocus: ['login'],
+      inFocus: ['merchant'],
       email: '',
       password: '',
       errors: [],
@@ -23,7 +23,9 @@ class App extends Component {
       items: '',
       total: '',
       address: '',
-      name: ''
+      name: '',
+      historicalOrders: [],
+      unassignedOrders: []
     }
     this.showLogin = this.showLogin.bind(this)
     this.showRegister = this.showRegister.bind(this)
@@ -46,6 +48,8 @@ class App extends Component {
     this.getItems = this.getItems.bind(this)
     this.getTotal = this.getTotal.bind(this)
     this.getName = this.getName.bind(this)
+    this.getHistoricalOrders = this.getHistoricalOrders.bind(this)
+    this.getCurrentOrders = this.getCurrentOrders.bind(this)
 
   }
 
@@ -188,6 +192,7 @@ class App extends Component {
     this.setState({inFocus: ['login']})
   }
 
+
   addOrder(e) {
     e.preventDefault();
     // axios.post('https://frozen-reaches-18671.herokuapp.com/orders', { email: this.state.email, password: this.state.password })
@@ -203,20 +208,36 @@ class App extends Component {
     this.setState({inFocus: ['merchant']})
   }
 
-  showMerchantProfile(e) {
-    e.preventDefault();
-    fetch("https://frozen-reaches-18671.herokuapp.com/users/1").then(function(response){
+  showMerchantProfile() {
+
+    fetch("https://frozen-reaches-18671.herokuapp.com/users/3").then(function(response){
       return response.text()
     }).then(function(body){
-      debugger;
-      this.setState({ authUser: this.state.email, errors: [], inFocus: ['login'] })
+      this.setState({ orders: body})
+    }.bind(this)).then(function(){
+      this.getHistoricalOrders()
+      this.getCurrentOrders()
+    }.bind(this))
 
-    }.bind(this));
     // axios.get('https://frozen-reaches-18671.herokuapp.com/users/1')
     //   .then(function(res){
     //     console.log(res.data[0])
     // });
     // this.setState({inFocus: ['merchant']})
+  }
+
+  componentDidMount(){
+    this.showMerchantProfile()
+  }
+
+  getHistoricalOrders(){
+    var newArray = JSON.parse(this.state.orders).filter((data)=> data.totalDeliveryTime != null)
+    this.setState({historicalOrders: newArray})
+  }
+
+  getCurrentOrders(){
+    var newArray = JSON.parse(this.state.orders).filter((data)=> data.totalDeliveryTime === null)
+    this.setState({currentOrders: newArray})
   }
 
   showOrder(e) {
