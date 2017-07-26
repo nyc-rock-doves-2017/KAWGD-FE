@@ -4,7 +4,8 @@ import OrderShow from '../Orders/ordershow.js';
 
 export default class MerchantProfile extends Component {
   render(){
-    let orderData =  [{
+    // debugger;
+    let orderData = [{
                           "city": "New York City",
                           "country": "United States",
                           "customerName": "Mrs. Emil Hilpert",
@@ -48,6 +49,8 @@ export default class MerchantProfile extends Component {
                       }
                     ]
 
+    // var historicalOrders = orderData;
+    // var unassignedOrders = orderData;
     var historicalOrders = orderData.filter((data)=> data.deliveryTime != null)
     var unassignedOrders = orderData.filter((data)=> data.deliveryTime === null)
 

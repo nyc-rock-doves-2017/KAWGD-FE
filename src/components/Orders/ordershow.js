@@ -18,7 +18,7 @@ export default class OrderShow extends Component {
                       }
     return(
       <div className="popup">
-        <a href="/" onClick={this.props.methods.showLogin} className='text-right'>X</a>
+        <a href="/" className='text-right'>X</a>
         <h1>Information for:</h1>
         <ul>
           <li>Order ID: {order.orderId}</li>
