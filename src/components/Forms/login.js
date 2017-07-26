@@ -3,6 +3,7 @@ import React, { Component } from "react";
 class Login extends React.Component {
 
   render(){
+
     return(
       <div className="popup">
         <form className="popup">
@@ -13,7 +14,7 @@ class Login extends React.Component {
           </div>
           <div className="">
             <label>Password</label>
-            <input value={this.props.state.password} onChange={this.props.methods.getPassword} placeholder="Password" />
+            <input value={this.props.state.password} type="password" onChange={this.props.methods.getPassword} placeholder="Password" />
           </div>
           <button onClick={this.props.methods.authorize}>Login</button>
         </form><br />
