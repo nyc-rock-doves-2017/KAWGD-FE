@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Login from './Forms/Login.js';
+import Login from './Forms/login.js';
 import Register from './Forms/Register.js';
 import MerchantProfile from './MerchantActivity/MerchantProfile.js';
 import OrderShow from './Orders/ordershow.js';
