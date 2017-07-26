@@ -8,9 +8,9 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      authUser: null,
+      authUser: {},
       orders: [],
-      inFocus: ['merchant'],
+      inFocus: ['login'],
       email: '',
       password: '',
       errors: [],
@@ -65,7 +65,6 @@ class App extends Component {
 
   showAddOrder(e) {
     e.preventDefault();
-    debugger;
     this.setState({inFocus: ['merchant', 'addOrder']})
   }
 
@@ -78,12 +77,11 @@ class App extends Component {
     }).then(function(response){
       return response.text()
     }).then(function(body){
-      console.log(body.text);
       if (body.includes("error")) {
-        this.setState({ authUser: this.state.email, errors: [], inFocus: ['login'] })
+        this.setState({ errors: [], inFocus: ['login'] })
       } else {
         // this.setState({inFocus: ['merchant']})
-        this.setState({inFocus: ['merchant']})
+        this.setState({ authUser: JSON.parse(body), inFocus: ['merchant']})
       }
 
     }.bind(this));
@@ -195,35 +193,50 @@ class App extends Component {
 
   addOrder(e) {
     e.preventDefault();
-    // axios.post('https://frozen-reaches-18671.herokuapp.com/orders', { email: this.state.email, password: this.state.password })
-    //   .then(function(res){
-    //   if (res === "OK") {
-    //     this.setState({ authUser: this.state.login.email, errors: [], inFocus: ['merchant'] })
-    //   } else if (res === 'NOPE') {
-    //     this.setState({ errors: this.state.errors.push('incorrect email/pw') })
-    //   } else {
-    //     this.setState({ errors: this.state.errors.push('connectivity issues') })
-    //   }
-    // });
-    this.setState({inFocus: ['merchant']})
+    fetch("https://frozen-reaches-18671.herokuapp.com/orders", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({ merchant_id: this.state.authUser.id,
+                        items: this.state.items,
+                        total_price: this.state.total,
+                        cust_name: this.state.name,
+                        cust_street_ad: this.state.street,
+                        cust_city_town: this.state.city,
+                        cust_state: this.state.state,
+                        cust_zipcode: this.state.zip,
+                        cust_country: this.state.country,
+                        cust_phone_number: this.state.phone,
+                      }),
+    }).then(function(response){
+    })
   }
+  //   return response.text()
+  // }).then(function(body){
+  //   if (body.includes("error")) {
+  //     this.setState({ authUser: this.state.email, errors: [], inFocus: ['register'] })
+  //   } else {
+  //     // this.setState({inFocus: ['merchant']})
+  //    this.setState({ authUser: this.state.email, errors: [], inFocus: ['merchant'] })
+  //   }
+  // }.bind(this));
+  // this.setState({inFocus: ['merchant']})
 
   showMerchantProfile() {
-
-    fetch("https://frozen-reaches-18671.herokuapp.com/users/3").then(function(response){
-      return response.text()
-    }).then(function(body){
-      this.setState({ orders: body})
-    }.bind(this)).then(function(){
-      this.getHistoricalOrders()
-      this.getCurrentOrders()
-    }.bind(this))
-
-    // axios.get('https://frozen-reaches-18671.herokuapp.com/users/1')
-    //   .then(function(res){
-    //     console.log(res.data[0])
-    // });
-    // this.setState({inFocus: ['merchant']})
+    var userPath = 0
+    if (this.state.authUser.id != null){
+      userPath = "https://frozen-reaches-18671.herokuapp.com/users/" + this.state.authUser.id
+      fetch(userPath).then(function(response){
+        return response.text()
+      }).then(function(body){
+        this.setState({ orders: body})
+      }.bind(this)).then(function(){
+        this.getHistoricalOrders()
+        this.getCurrentOrders()
+      }.bind(this))
+    } else {
+      return null
+    }
+    this.setState({inFocus: ['merchant']})
   }
 
   componentDidMount(){
